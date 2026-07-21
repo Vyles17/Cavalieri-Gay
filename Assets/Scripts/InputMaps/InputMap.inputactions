@@ -1,6 +1,6 @@
 {
     "version": 1,
-    "name": "Movement",
+    "name": "InputMap",
     "maps": [
         {
             "name": "Movement",
@@ -89,6 +89,34 @@
                     "processors": "",
                     "groups": "",
                     "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "67281d6f-00bc-4663-a4e7-2299f434367b",
+            "actions": [
+                {
+                    "name": "PauseMenu",
+                    "type": "Button",
+                    "id": "dc822858-908e-4541-badb-7bb653d99182",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1209d173-ef8d-4d28-82cb-7cbbca8d9755",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
