@@ -856,7 +856,7 @@ GameObject:
   - component: {fileID: 919049391}
   - component: {fileID: 919049390}
   - component: {fileID: 919049389}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1145,6 +1145,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1380567433}
     m_Modifications:
+    - target: {fileID: 985247611937104907, guid: 0dab6da5ab0774e4893a6d9666dfb895, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 880730007}
+    - target: {fileID: 985247611937104907, guid: 0dab6da5ab0774e4893a6d9666dfb895, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 2040869340351463500, guid: 0dab6da5ab0774e4893a6d9666dfb895, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
