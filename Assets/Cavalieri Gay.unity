@@ -962,11 +962,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2040869340351463500, guid: 0dab6da5ab0774e4893a6d9666dfb895, type: 3}
   m_PrefabInstance: {fileID: 1867228168}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1277925109 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4919564663813253311, guid: 8dc4d1a49e2641d4ba2150f1d1abd9a0, type: 3}
-  m_PrefabInstance: {fileID: 4897817045156295121}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1368528867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1082,29 +1077,11 @@ Transform:
   - {fileID: 625884679}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1480449513 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3860533618882875327, guid: 8dc4d1a49e2641d4ba2150f1d1abd9a0, type: 3}
-  m_PrefabInstance: {fileID: 4897817045156295121}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1480449514 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6007127027915621367, guid: 8dc4d1a49e2641d4ba2150f1d1abd9a0, type: 3}
   m_PrefabInstance: {fileID: 4897817045156295121}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1480449515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1480449513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69c7199664d2b014baf1a3a2ebb9362e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PauseMenu
-  pauseMenu: {fileID: 1277925109}
 --- !u!1 &1544115343
 GameObject:
   m_ObjectHideFlags: 0
@@ -1130,7 +1107,7 @@ Transform:
   m_GameObject: {fileID: 1544115343}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 390.6436, y: 0.00003, z: 3113.547}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1149,10 +1126,6 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 880730007}
-    - target: {fileID: 985247611937104907, guid: 0dab6da5ab0774e4893a6d9666dfb895, type: 3}
-      propertyPath: groundLayer.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
     - target: {fileID: 2040869340351463500, guid: 0dab6da5ab0774e4893a6d9666dfb895, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1197,14 +1170,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CavaliereBianco
       objectReference: {fileID: 0}
-    - target: {fileID: 7506583458154490797, guid: 0dab6da5ab0774e4893a6d9666dfb895, type: 3}
-      propertyPath: runSpeed
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7506583458154490797, guid: 0dab6da5ab0774e4893a6d9666dfb895, type: 3}
-      propertyPath: walkSpeed
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1219,48 +1184,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 1544115344}
     m_Modifications:
     - target: {fileID: 1897385241420333212, guid: 8dc4d1a49e2641d4ba2150f1d1abd9a0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1897385241420333212, guid: 8dc4d1a49e2641d4ba2150f1d1abd9a0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1897385241420333212, guid: 8dc4d1a49e2641d4ba2150f1d1abd9a0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 329690145}
-    - target: {fileID: 1897385241420333212, guid: 8dc4d1a49e2641d4ba2150f1d1abd9a0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1897385241420333212, guid: 8dc4d1a49e2641d4ba2150f1d1abd9a0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ResumeGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 1897385241420333212, guid: 8dc4d1a49e2641d4ba2150f1d1abd9a0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GameManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1897385241420333212, guid: 8dc4d1a49e2641d4ba2150f1d1abd9a0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 3860533618882875327, guid: 8dc4d1a49e2641d4ba2150f1d1abd9a0, type: 3}
       propertyPath: m_Name
       value: Pause Menu
       objectReference: {fileID: 0}
     - target: {fileID: 6007127027915621367, guid: 8dc4d1a49e2641d4ba2150f1d1abd9a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -389.09518
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6007127027915621367, guid: 8dc4d1a49e2641d4ba2150f1d1abd9a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.00003
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6007127027915621367, guid: 8dc4d1a49e2641d4ba2150f1d1abd9a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3107.546
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6007127027915621367, guid: 8dc4d1a49e2641d4ba2150f1d1abd9a0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1293,10 +1234,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3860533618882875327, guid: 8dc4d1a49e2641d4ba2150f1d1abd9a0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1480449515}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dc4d1a49e2641d4ba2150f1d1abd9a0, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

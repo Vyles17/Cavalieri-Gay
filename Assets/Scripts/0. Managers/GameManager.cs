@@ -6,7 +6,8 @@ using UnityEngine.InputSystem;
 public enum GameStatus
 {
     Running,
-    Paused,
+    Dialogue,
+    Paused //Aggiungere qua i vari stati di gioco che aggiungeremo
 }
 
 public class GameManager : MonoBehaviour
@@ -16,7 +17,12 @@ public class GameManager : MonoBehaviour
 
     //bools per gli stati di gioco
     [HideInInspector] public bool isPaused = false;
-    public GameStatus status = GameStatus.Running;
+
+    //stati di gioco e i loro bool
+    public GameStatus status;
+    public bool IsPaused => status == GameStatus.Paused;
+    public bool IsDialogue => status == GameStatus.Dialogue;
+    public bool IsGameplay => status == GameStatus.Running;
 
     //Input map per gestire i comandi per la UI e il suo evento
     private InputMap inputMap;
@@ -51,19 +57,25 @@ public class GameManager : MonoBehaviour
         status = GameStatus.Running;
         isPaused = false;
     }
+
+    //metodo per settare gli stati
+    public void SetGameStatus(GameStatus newStatus)
+    {
+        status = newStatus;
+    }
+
+    //metodo per mettere in pausa
     private void Pause(InputAction.CallbackContext context)
     {
-        if (isPaused)
+        if (status == GameStatus.Paused)
             ResumeGame();
-        else
+        else if (status == GameStatus.Running)
             PauseGame();
     }
 
     private void PauseGame()
     {
-        //setto il bool, lo stato e la velocità di gioco, faccio partire l'evento che richiama la UI
-        isPaused = true;
-        status = GameStatus.Paused;
+        SetGameStatus(GameStatus.Paused);
 
         Time.timeScale = 0f;
 
@@ -72,9 +84,7 @@ public class GameManager : MonoBehaviour
 
     public void ResumeGame()
     {
-        //setto il bool, lo stato e la velocità di gioco, faccio partire l'evento che richiama la UI
-        isPaused = false;
-        status = GameStatus.Running;
+        SetGameStatus(GameStatus.Running);
 
         Time.timeScale = 1f;
 

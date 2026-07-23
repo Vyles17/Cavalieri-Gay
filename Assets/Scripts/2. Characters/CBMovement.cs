@@ -9,6 +9,8 @@ public class CBMovement : MonoBehaviour
     [SerializeField] private float runSpeed = 5f;
     [SerializeField] private float rotationSpeed = 10f;
 
+    public bool canMove = true;
+
     private CharacterController controller;
 
     //ci gettiamo lo script degli input, che funzionerà attraverso i settings di movimento di questo script
@@ -22,6 +24,9 @@ public class CBMovement : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.status != GameStatus.Running && !canMove)
+            return;
+
         Move();
     }
 

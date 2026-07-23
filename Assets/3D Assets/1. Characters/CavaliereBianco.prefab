@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8732161350598531760}
   - component: {fileID: 985247611937104907}
   - component: {fileID: 7506583458154490797}
+  - component: {fileID: 4012262029576448266}
   m_Layer: 0
   m_Name: CavaliereBianco
   m_TagString: Untagged
@@ -186,6 +187,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7647879c6ab06b64ebca4b045d11f284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CBInput
+  mainCamera: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &7506583458154490797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,9 +203,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c3dd216004db243a58ae824b65f2f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CBMovement
-  walkSpeed: 3
-  runSpeed: 5
+  walkSpeed: 5
+  runSpeed: 8
   rotationSpeed: 10
+--- !u!114 &4012262029576448266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538016693297560559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 765639b0c8b295440a2b8c8433c3f8c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CBStats
+  cbLVL: 1
+  cbToNextLVL: 100
+  cbCurrentHP: 50
+  cbMaxHP: 50
+  cbMaxSTA: 100
+  cbStrenght: 1
+  cbDefense: 1
+  cbSpeed: 1
+  cbSConstitution: 1
 --- !u!1 &4241757315045182868
 GameObject:
   m_ObjectHideFlags: 0
