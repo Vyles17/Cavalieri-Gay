@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 //Script che ci servirà per tutti gli input del cavaliere bianco dati dal player
 public class CBInput : MonoBehaviour
@@ -17,6 +18,8 @@ public class CBInput : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     private Vector3 clickTarget;
     private bool hasClickTarget;
+    private float mouseHoldTime = 0f;
+    private bool isHoldingMouse = false;
 
     //valori che ci prendiamo dallo script CBMovement per muovere il personaggio
     public Vector3 MoveDirection { get; private set; }
@@ -35,6 +38,13 @@ public class CBInput : MonoBehaviour
 
     private void Update()
     {
+        //per far si che il CB non si muova quando il gioco è in pausa
+        if (GameManager.Instance.status != GameStatus.Running)
+        {
+            MoveDirection = Vector3.zero;
+            return;
+        }
+
         ReadKeyboard();
         ReadMouse();
     }
@@ -65,7 +75,18 @@ public class CBInput : MonoBehaviour
             Vector3 direction = clickTarget - transform.position;
             direction.y = 0;
 
-            MoveDirection = direction;
+            //se siamo arrivati al target, ci fermiamo
+            if (direction.magnitude <= 0.1f)
+            {
+                hasClickTarget = false;
+                MoveDirection = Vector3.zero;
+            }
+
+            //sennò lo raggiungiamo
+            else
+            {
+                MoveDirection = direction;
+            }
         }
 
         //sennò se ne sta fermo
@@ -78,18 +99,46 @@ public class CBInput : MonoBehaviour
     //metodo per il movimento col puntatore
     private void ReadMouse()
     {
+        //se il mouse è sopra la UI, ignoriamo il click
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
         //con un solo click
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
+            mouseHoldTime = 0f;
+            isHoldingMouse = true;
             SetClickTarget();
         }
 
 
         //o tenendo premuto/trascinando il cursore
-        if (Mouse.current.leftButton.isPressed)
+        if (Mouse.current.leftButton.isPressed && isHoldingMouse)
         {
-            SetClickTarget();
+            mouseHoldTime += Time.deltaTime;
+
+            //dopo una piccola soglia consideriamo il movimento come "mouse tenuto premuto"
+            if (mouseHoldTime >= 0.1f)
+            {
+                SetClickTarget();
+            }
         }
+
+        //quando rilasciamo il cursore
+        if (Mouse.current.leftButton.wasReleasedThisFrame)
+        {
+            // Se stavamo tenendo premuto il mouse,
+            // cancelliamo il movimento
+            if (mouseHoldTime >= 0.1f)
+            {
+                hasClickTarget = false;
+                MoveDirection = Vector3.zero;
+            }
+
+            isHoldingMouse = false;
+            mouseHoldTime = 0f;
+        }
+
     }
 
     //metodo per settare la direzione nello spazio con un raycast

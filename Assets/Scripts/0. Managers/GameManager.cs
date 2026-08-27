@@ -15,9 +15,6 @@ public class GameManager : MonoBehaviour
     //Singleton del GM
     public static GameManager Instance;
 
-    //bools per gli stati di gioco
-    [HideInInspector] public bool isPaused = false;
-
     //stati di gioco e i loro bool
     public GameStatus status;
     public bool IsPaused => status == GameStatus.Paused;
@@ -55,7 +52,6 @@ public class GameManager : MonoBehaviour
     {
         //all'inizio, il gioco non è in pausa (rivedere più avanti?)
         status = GameStatus.Running;
-        isPaused = false;
     }
 
     //metodo per settare gli stati
@@ -73,7 +69,7 @@ public class GameManager : MonoBehaviour
             PauseGame();
     }
 
-    private void PauseGame()
+    public void PauseGame()
     {
         SetGameStatus(GameStatus.Paused);
 

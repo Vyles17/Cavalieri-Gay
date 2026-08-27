@@ -24,7 +24,7 @@ public class CBMovement : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance.status != GameStatus.Running && !canMove)
+        if (GameManager.Instance.status != GameStatus.Running || !canMove)
             return;
 
         Move();
