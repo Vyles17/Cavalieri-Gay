@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 820532622482324852}
   - component: {fileID: 5299203820991979671}
   - component: {fileID: 7898947437792130050}
-  m_Layer: 0
+  - component: {fileID: 7702261862430288752}
+  m_Layer: 7
   m_Name: Apple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,12 +108,26 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7702261862430288752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2341858541751940700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b65f371e11ca2c04ab2fbfca528852cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollectibleObjects
+  itemData: {fileID: 11400000, guid: a9ed9760e035c2049a43dbfa7b46b7bf, type: 2}
+  interactionDistance: 2
 --- !u!1 &4354410198358322179
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,7 +140,7 @@ GameObject:
   - component: {fileID: 8802290516921181092}
   - component: {fileID: 7008084937281568086}
   - component: {fileID: 24860203472714965}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leaf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
