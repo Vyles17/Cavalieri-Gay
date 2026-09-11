@@ -26,18 +26,15 @@ public class CollectibleObjects : MonoBehaviour
     }
 
     //metodo per raccogliere gli oggetti (se siamo abbastanza vicini)
-    public virtual void Collect()
+    public virtual void Collect(Inventory inventory)
     {
-        //una volta messo nell'inventario...
-        //Inventory.AddItem(itemData);
+        //utilizzo il metodo della classe Inventory per aggiungere la quantità scelta
+        int addedAmount = inventory.AddItem(itemData, 1);
 
-        //distruggiamo l'oggetto nel mondo
-        Destroy(gameObject);
-    }
-
-    //per aprire il menu azioni quando l'oggetto viene collezionato (da sistemare più avanti)
-    public virtual void OnHoldClick()
-    {
-
+        //se raccolgo tutta la quantità di oggeti presente, cancella il game obj dalla scena
+        if (addedAmount > 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
