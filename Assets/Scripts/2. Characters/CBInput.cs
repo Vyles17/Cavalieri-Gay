@@ -8,9 +8,10 @@ public class CBInput : MonoBehaviour
     //gettiamo l'input map del player
     private PlayerInput playerInput;
 
-    //e le sue azioni
+    // le sue azioni e il suo inventario
     private InputAction walkAction;
     private InputAction runAction;
+    private Inventory inventory;
 
     //reference per il click-to-move
     [Header("Click Movement")]
@@ -35,6 +36,7 @@ public class CBInput : MonoBehaviour
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
+        inventory = GetComponent<Inventory>();
 
         //getto le Action Map, se esistono e hanno questo nome preciso
         walkAction = playerInput.actions.FindAction("Walk");
@@ -152,7 +154,7 @@ public class CBInput : MonoBehaviour
             //se abbiamo cliccato su un oggetto collezionabile, lo raccogliamo
             if (collectibleTarget != null)
             {
-                collectibleTarget.Collect();
+                collectibleTarget.Collect(inventory);
                 collectibleTarget = null;
             }
         }
@@ -196,7 +198,7 @@ public class CBInput : MonoBehaviour
                 hasClickTarget = false;
                 MoveDirection = Vector3.zero;
 
-                collectibleTarget.Collect();
+                collectibleTarget.Collect(inventory);
                 collectibleTarget = null;
                 return;
             }

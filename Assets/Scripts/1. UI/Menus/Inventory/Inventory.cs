@@ -38,6 +38,9 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    //evento per aggiornare la UI
+    public System.Action OnInventoryChanged;
+
     //metodo per aggiungere oggetti nell'inventario e in quale quantità (è true se avevamo effettivamente spazio per aggiungerlo)
     public int AddItem(ItemData itemData, int quantity = 1)
     {
@@ -71,6 +74,9 @@ public class Inventory : MonoBehaviour
 
                 //diminuiamo il numero di oggetti che dobbiamo ancora aggiungere
                 remaining -= amountToAdd;
+
+                //aggiorniamo la UI
+                OnInventoryChanged?.Invoke();
 
                 //se non ci rimane più niente da aggiungere, abbiamo finito
                 if (remaining <= 0)
@@ -239,6 +245,9 @@ public class Inventory : MonoBehaviour
         slot.positionX = newX;
         slot.positionY = newY;
 
+        //aggiorno la UI
+        OnInventoryChanged?.Invoke();
+
         return true;
     }
 
@@ -263,6 +272,9 @@ public class Inventory : MonoBehaviour
 
         slot.rotated = newRotation;
 
+        //aggiorno la UI
+        OnInventoryChanged?.Invoke();
+
         return true;
     }
 
@@ -276,6 +288,9 @@ public class Inventory : MonoBehaviour
         //rimuoviamo l'oggetto dall'inventario
         //(poi aggiungere qui la cosa di ripiazzarli nel mondo)!!!!!!
         items.Remove(slot);
+
+        //aggiorno la UI
+        OnInventoryChanged?.Invoke();
 
         return true;
     }
@@ -297,6 +312,9 @@ public class Inventory : MonoBehaviour
         //se lo stack è arrivato a zero, non ha più senso mantenere questo InventorySlot
         if (slot.quantity == 0)
             items.Remove(slot);
+
+        //aggiorno la UI
+        OnInventoryChanged?.Invoke();
 
         //la rimozione è avvenuta correttamente
         return true;
@@ -323,7 +341,7 @@ public class Inventory : MonoBehaviour
     //metodo per quando il player acquisisce più spazio per l'inventario
     public void UpgradeInventory(int newWidth, int newHeight)
     {
-        // Non permettiamo di diminuire la griglia
+        //non si può diminuire la griglia
         if (newWidth < width || newHeight < height)
         {
             return;
@@ -331,5 +349,8 @@ public class Inventory : MonoBehaviour
 
         width = newWidth;
         height = newHeight;
+
+        //per aggiornare la UI
+        OnInventoryChanged?.Invoke();
     }
 }
