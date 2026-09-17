@@ -17,7 +17,7 @@ MonoBehaviour:
   itemType: 0
   icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   worldPrefab: {fileID: 2341858541751940700, guid: a61c8e58dd3d6c546a69ef675de8226e, type: 3}
-  maxStack: 99
+  maxStack: 3
   actions: 000000000300000004000000
   width: 1
   height: 1

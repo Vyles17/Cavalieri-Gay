@@ -75,12 +75,12 @@ public class Inventory : MonoBehaviour
                 //diminuiamo il numero di oggetti che dobbiamo ancora aggiungere
                 remaining -= amountToAdd;
 
-                //aggiorniamo la UI
-                OnInventoryChanged?.Invoke();
-
                 //se non ci rimane più niente da aggiungere, abbiamo finito
                 if (remaining <= 0)
+                {
+                    OnInventoryChanged?.Invoke();
                     return quantity;
+                }
             }
         }
 
@@ -162,7 +162,14 @@ public class Inventory : MonoBehaviour
 
         //aggiunti = quantità iniziale - quantità rimasta
         //(ricordarsi di mettere nel metodo del "raccogliere" il fatto che i restanti restanofuori) 
-        return quantity - remaining;
+        int addedAmount = quantity - remaining;
+
+        if (addedAmount > 0)
+        {
+            OnInventoryChanged?.Invoke();
+        }
+
+        return addedAmount;
     }
 
 

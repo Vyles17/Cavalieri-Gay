@@ -1,8 +1,6 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 // Scriptino generale per settare il manager di gioco
-
 public enum GameStatus
 {
     Running,
@@ -21,10 +19,6 @@ public class GameManager : MonoBehaviour
     public bool IsDialogue => status == GameStatus.Dialogue;
     public bool IsGameplay => status == GameStatus.Running;
 
-    //Input map per gestire i comandi per la UI e il suo evento
-    private InputMap inputMap;
-    public static System.Action<bool> OnPauseChanged;
-
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -33,21 +27,8 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
-
-        //ci gettiamo l'input map
-        inputMap = new InputMap();
-    }
-    void OnEnable()
-    {
-        inputMap.Enable();
-        inputMap.UI.PauseMenu.performed += Pause;
     }
 
-    void OnDisable()
-    {
-        inputMap.UI.PauseMenu.performed -= Pause;
-        inputMap.Disable();
-    }
     private void Start()
     {
         //all'inizio, il gioco non è in pausa (rivedere più avanti?)
@@ -60,30 +41,17 @@ public class GameManager : MonoBehaviour
         status = newStatus;
     }
 
-    //metodo per mettere in pausa
-    private void Pause(InputAction.CallbackContext context)
-    {
-        if (status == GameStatus.Paused)
-            ResumeGame();
-        else if (status == GameStatus.Running)
-            PauseGame();
-    }
-
+    //metodo per settare la pausa
     public void PauseGame()
     {
         SetGameStatus(GameStatus.Paused);
-
         Time.timeScale = 0f;
-
-        OnPauseChanged?.Invoke(true);
     }
 
+    //e quello per resumare il gioco
     public void ResumeGame()
     {
         SetGameStatus(GameStatus.Running);
-
         Time.timeScale = 1f;
-
-        OnPauseChanged?.Invoke(false);
     }
 }
